@@ -1,0 +1,29 @@
+$step-bg: #ffffff;
+$step-default-color: #b3c0ca;
+$step-title-color: #597694;
+
+
+$step-bullet: #b3c0ca;
+$step-bullet-active: #597694;
+
+.steps-wrapper {
+  width: 280px;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 20px 10px rgba(0, 0, 0, .3);
+}
+
+.step {
+  background-color: $step-bg;
+  color: $step-default-color;
+  text-align: center;
+  
+  .title {
+    font-weight: normal;
+    color: $step-title-color;
+  }
+  .info {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
