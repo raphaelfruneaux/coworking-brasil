@@ -15,6 +15,10 @@ const paths = {
     src: 'src/assets/scripts/**/*.js',
     dest: './dist/'
   },
+  images: {
+    src: 'src/assets/images/**/*',
+    dest: './dist/assets/images/'
+  },
   html: {
     src: 'src/**/*.html',
     dest: './dist/'
@@ -43,24 +47,27 @@ const scripts = () => {
 gulp.task('scripts', scripts);
 
 
+const images = () => {
+  return gulp.src(paths.images.src).pipe(gulp.dest(paths.images.dest));
+};
+
+
 const html = () => {
   return gulp.src(paths.html.src).pipe(gulp.dest(paths.html.dest));
 };
 
 
-const build = gulp.series(clean, gulp.parallel(styles, scripts, html));
+const build = gulp.series(clean, gulp.parallel(styles, scripts, images, html));
 gulp.task('build', build);
 
 
 
 const serve = () => {
   browserSync.init({
-    server: {
-      baseDir: "./dist"
-  }
+    server: "./dist"
   });
 
-
-  gulp.watch('src/assets/styles/**/*.scss', styles);
+  gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.html.src).on('change', gulp.series(html, browserSync.reload));
 }
-gulp.task('default', gulp.parallel(styles, scripts, html, serve));
+gulp.task('default', gulp.series(gulp.parallel(styles, scripts, images, html), serve));

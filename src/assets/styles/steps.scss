@@ -1,29 +1,94 @@
+/**
+ * steps.scss
+ */
+
 $step-bg: #ffffff;
 $step-default-color: #b3c0ca;
 $step-title-color: #597694;
 
-
 $step-bullet: #b3c0ca;
 $step-bullet-active: #597694;
 
-.steps-wrapper {
+
+.steps-container {
   width: 280px;
   padding: 30px;
+  margin: 0 auto;
   border-radius: 5px;
-  box-shadow: 0px 5px 20px 10px rgba(0, 0, 0, .3);
+  background-color: $step-bg;
+  box-shadow: 0px 15px 40px 4px rgba(103, 106, 109, .26);
+  box-sizing: border-box;
+
+  .steps-header {
+    text-align: right;
+  }
+
+  .skip {
+    display: inline-block;
+    color: $step-default-color;
+    text-decoration: none;
+    transition: all .2s ease;
+
+    &:hover {
+      color: $step-title-color;
+      text-decoration: none;
+
+    }
+  }
+
+  .steps-bullets {
+    text-align: center;
+
+    .bullet {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: {
+        left: 10px;
+        right: 10px;
+      }
+      background-color: $step-default-color;
+      border-radius: 50%;
+      transition: all .2s ease;
+
+      &:hover, &.active {
+        background-color: $step-bullet-active;
+      }
+    }
+  }
 }
 
 .step {
-  background-color: $step-bg;
   color: $step-default-color;
   text-align: center;
+
+  img {
+    display: inline-block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
   
   .title {
-    font-weight: normal;
     color: $step-title-color;
+    font: {
+      weight: normal;
+      size: 1.4em;
+    }
+    margin: 0;
   }
+
   .info {
-    padding-left: 30px;
-    padding-right: 30px;
+    display: inline-block;
+    width: 175px;
+    margin: {
+      top: 35px;
+      bottom: 50px;
+      left: auto;
+      right: auto;
+    }
+    font: {
+      weight: 200;
+      size: 1.1em;
+    }
   }
 }
