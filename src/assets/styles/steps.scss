@@ -24,15 +24,36 @@ $step-bullet-active: #597694;
   }
 
   .skip {
+    position: relative;
     display: inline-block;
     color: $step-default-color;
     text-decoration: none;
     transition: all .2s ease;
 
+    &:after {
+      position: absolute;
+      top: -1px;
+      right: 100%;
+      width: 100px;
+      padding-right: 5px;
+      content: attr(data-message);
+      text-align: right;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition: opacity .3s, visibility .3s;
+    }
+
     &:hover {
       color: $step-title-color;
-      text-decoration: none;
+      text-decoration: none;  
 
+      &:after {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity .3s, visibility .3s;
+      }
     }
   }
 
