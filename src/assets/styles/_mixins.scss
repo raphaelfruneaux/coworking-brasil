@@ -1,0 +1,9 @@
+@mixin step-active($n) {
+	&:nth-of-type(#{$n}):checked ~ .steps div:first-of-type {
+    margin-left: (($n - 1) * -100%);
+  }
+
+  &:nth-of-type(#{$n}):checked ~ .bullets label:nth-of-type(#{$n}) {
+    background-color: $step-bullet-active;
+  }
+}

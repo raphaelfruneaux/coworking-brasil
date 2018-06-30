@@ -10,7 +10,11 @@ $step-bullet: #b3c0ca;
 $step-bullet-active: #597694;
 
 
+@import "mixins";
+
+
 .steps-container {
+  position: relative;
   width: 280px;
   padding: 30px;
   margin: 0 auto;
@@ -18,6 +22,18 @@ $step-bullet-active: #597694;
   background-color: $step-bg;
   box-shadow: 0px 15px 40px 4px rgba(103, 106, 109, .26);
   box-sizing: border-box;
+
+  display: block;
+  perspective: 660px;
+  text-align: left;
+
+  > input[type=radio] {
+    display: none;
+
+    @include step-active(3);
+    @include step-active(2);
+    @include step-active(1);
+  }
 
   .steps-header {
     text-align: right;
@@ -38,10 +54,8 @@ $step-bullet-active: #597694;
       padding-right: 5px;
       content: attr(data-message);
       text-align: right;
-
       visibility: hidden;
       opacity: 0;
-
       transition: opacity .3s, visibility .3s;
     }
 
@@ -57,11 +71,12 @@ $step-bullet-active: #597694;
     }
   }
 
-  .steps-bullets {
+  .bullets {
     text-align: center;
     padding-bottom: 10px;
 
     .bullet {
+      cursor: pointer;
       display: inline-block;
       width: 8px;
       height: 8px;
@@ -73,44 +88,62 @@ $step-bullet-active: #597694;
       border-radius: 50%;
       transition: all .2s ease;
 
-      &:hover, &.active {
+      &:hover {
         background-color: $step-bullet-active;
       }
     }
   }
 }
 
-.step {
-  color: $step-default-color;
-  text-align: center;
+.steps {
+  position: relative;
+  width: 220px;
+  height: 380px;
+  overflow: hidden;
+  white-space: nowrap;
 
-  img {
+  .step {
+    position: relative;
     display: inline-block;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
+    width: 100%;
+    height: 100%;
+    
+    transition: all 0.5s cubic-bezier(0.4, 1.3, 0.65, 1);
+    white-space: normal;
+    vertical-align: top;
+    overflow: hidden;
+
+    color: $step-default-color;
+    text-align: center;
   
-  .title {
-    color: $step-title-color;
-    font: {
-      weight: normal;
-      size: 1.4em;
+    img {
+      display: inline-block;
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
-    margin: 0;
-  }
-
-  .info {
-    display: inline-block;
-    width: 175px;
-    margin: {
-      top: 35px;
-      bottom: 50px;
-      left: auto;
-      right: auto;
+    
+    .title {
+      color: $step-title-color;
+      font: {
+        weight: normal;
+        size: 1.4em;
+      }
+      margin: 0;
     }
-    font: {
-      weight: 200;
-      size: 1.1em;
+  
+    .info {
+      display: inline-block;
+      width: 195px;
+      margin: {
+        top: 35px;
+        bottom: 50px;
+        left: auto;
+        right: auto;
+      }
+      font: {
+        weight: 200;
+        size: 1.1em;
+      }
     }
   }
 }

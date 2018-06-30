@@ -23,32 +23,35 @@
 <body class="body">
 
     <section class="steps-container">
+        <input type="radio" name="steps" id="steps1" checked>
+        <input type="radio" name="steps" id="steps2">
+        <input type="radio" name="steps" id="steps3">
         <div class="steps-header">
             <a class="skip" href="#" data-message="Skip this tutorial">
                 <i class="fas fa-angle-double-right"></i>
             </a>
         </div>
         <div class="steps">
-            <div class="step">
+            <div class="step" id="step1">
                 <img src="assets/images/step1.jpg" alt="Is The Product Safe?">
                 <h2 class="title">Is The Product Safe?</h2>
                 <p class="info">It's so protected that even our team has no any access to your payment data.</p>
             </div>
-            <!-- <div class="step">
+            <div class="step" id="step2">
                 <img src="assets/images/step2.jpg" alt="Do You Bill My Card?">
                 <h2 class="title">Do You Bill My Card?</h2>
                 <p class="info">We will never bill your card. Seriously. We earn money from services, not from users.</p>
             </div>
-            <div class="step">
+            <div class="step" id="step3">
                 <img src="assets/images/step3.jpg" alt="What Happens To My Data?">
                 <h2 class="title">What Happens To My Data?</h2>
                 <p class="info">You provide your data to our robot without human interaction. Then it shows stats to you.</p>
-            </div> -->
+            </div>
         </div>
-        <div class="steps-bullets">
-            <a href="#" class="bullet"></a>
-            <a href="#" class="bullet"></a>
-            <a href="#" class="bullet"></a>
+        <div class="bullets">
+            <label for="steps1" class="bullet"></label>
+            <label for="steps2" class="bullet"></label>
+            <label for="steps3" class="bullet"></label>
         </div>
     </section>
 

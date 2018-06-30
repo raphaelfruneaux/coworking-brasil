@@ -1,8 +1,9 @@
 const del = require('del');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const rev  = require('gulp-rev');
 const concat = require('gulp-concat');
+const htmlmin = require('gulp-htmlmin');
+const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 
@@ -36,6 +37,7 @@ const styles = () => {
       browsers: ['last 2 versions'],
     }))
     .pipe(concat('styles.css'))
+    .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest(paths.styles.dest))
     .pipe(browserSync.stream());
 };
@@ -53,7 +55,9 @@ const images = () => {
 
 
 const html = () => {
-  return gulp.src(paths.html.src).pipe(gulp.dest(paths.html.dest));
+  return gulp.src(paths.html.src)
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(paths.html.dest));
 };
 
 
